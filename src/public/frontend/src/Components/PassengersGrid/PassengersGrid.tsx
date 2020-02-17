@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 import PassengerContext from '../../Context/PassengerContext';
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef, GridOptions } from 'ag-grid-community';
-// TODO import these styles somewhere else
+import { Passenger } from '../AddPassengers/Models';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import { Passenger } from '../AddPassengers/Models';
 
 const PassengersGrid = () => {
 
@@ -64,7 +63,7 @@ const PassengersGrid = () => {
     ];
 
     return (
-        <div style={{height: 400}}>
+        <div style={{ height: 650 }} className="ag-theme-balham">
             <AgGridReact
                 gridOptions={gridOptions}
                 columnDefs={columnDefs}

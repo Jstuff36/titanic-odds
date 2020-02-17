@@ -48,7 +48,7 @@ export const EMBARKED_LOCATIONS: DropdownItemProps[] = [
     }
 ]
 
-export const IMPORT_OPTIONS: DropdownItemProps[] = [
+export const IMPORT_OPTIONS = [
     {
         text: 'Import Passangers Information',
         value: 'import'

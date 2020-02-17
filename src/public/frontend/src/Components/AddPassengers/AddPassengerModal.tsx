@@ -17,6 +17,8 @@ const AddPassangerModal = ({ }: OwnProps) => {
     const [passengerFormFields, setPassengerFormFields] = useState<Passenger>(PASSANGER_FORM_INITIAL_STATE)
     const [importType, setImportType] = useState<string | null>(null)
 
+    const onClose = () => setImportType(null);
+
     const postPassengers = (passengers: Passenger[]) => axios.post('/api/v1/passengar', passengers);
 
     const onSubmit = async () => {
@@ -43,18 +45,25 @@ const AddPassangerModal = ({ }: OwnProps) => {
         }
     }
 
+    const renderTrigger = () => {
+        return (
+            <Dropdown item text={"Add Passengers"}>
+                <Dropdown.Menu>
+                    {
+                        IMPORT_OPTIONS.map(option =>
+                            <Dropdown.Item onClick={() => setImportType(option.value)}>{option.text}</Dropdown.Item>
+                        )
+                    }
+                </Dropdown.Menu>
+            </Dropdown>
+        )
+    }
+
     return (
         <Modal
             open={!!importType}
-            onClose={() => setImportType(null)}
-            trigger={
-                <Dropdown
-                    selection
-                    text={"Add Passengars"}
-                    options={IMPORT_OPTIONS}
-                    onChange={(_, { value }: DropdownProps) => setImportType(value as string)}
-                />
-            }>
+            onClose={onClose}
+            trigger={renderTrigger()}>
             <Modal.Header>Add Passengar Information</Modal.Header>
             <Modal.Content>
                 {

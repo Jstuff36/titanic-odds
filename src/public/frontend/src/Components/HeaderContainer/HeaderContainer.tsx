@@ -1,12 +1,16 @@
 import React from "react";
-import { Container } from "semantic-ui-react";
+import { Container, Header, Menu } from "semantic-ui-react";
+import AddPassangerModal from "../AddPassengers/AddPassengerModal";
 
-const Header = () => {
+const HeaderContainer = () => {
     return (
-        <Container style={{height: 100}}>
-            Are your odds of survival Titanic?
-        </Container>
+        <Menu inverted>
+            <Container>
+                <Menu.Item as={'h2'} content={'Are your odds of survival Titanic?'} style={{marginBottom: 0}}/>
+                <AddPassangerModal />
+            </Container>
+        </Menu>
     )
 };
 
-export default Header;
+export default HeaderContainer;
