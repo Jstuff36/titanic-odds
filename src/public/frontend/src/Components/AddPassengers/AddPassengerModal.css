@@ -14,14 +14,14 @@
 
 .exampleTable th {
     font-size: 13px;
-    padding: 0 12px;
+    padding: 0 10px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
 .exampleTable td {
     font-size: 11px;
-    padding: 0 12px;
+    padding: 0 10px;
     border: 1px solid #ddd;
     text-align: center;
 }
