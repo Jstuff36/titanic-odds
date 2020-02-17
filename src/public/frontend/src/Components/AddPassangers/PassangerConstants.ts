@@ -2,6 +2,7 @@ import { DropdownItemProps } from "semantic-ui-react";
 import { Passenger } from "./Models";
 
 export const passengerFormFieldsToFriendlyNames: { [key in keyof Passenger]: string } = {
+    id: "ID",
     pClass: "Ticket Class",
     sex: "Sex",
     age: "Age",
@@ -14,6 +15,7 @@ export const passengerFormFieldsToFriendlyNames: { [key in keyof Passenger]: str
 }
 
 export const PASSANGER_FORM_INITIAL_STATE: Passenger = {
+    id: '',
     pClass: '',
     sex: '',
     age: '',

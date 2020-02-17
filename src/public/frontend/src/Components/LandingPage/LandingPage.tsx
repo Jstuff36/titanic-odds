@@ -3,6 +3,7 @@ import { Container } from "semantic-ui-react";
 import AddPassangerModal from "../AddPassangers/AddPassangerModal";
 import { PassengerProvider, PassengerContextType } from "../../Context/PassangerContext";
 import { Passenger } from "../AddPassangers/Models";
+import PassengersGrid from "../PassengersGrid/PassengersGrid";
 
 const LandingPage = () => {
 
@@ -19,6 +20,7 @@ const LandingPage = () => {
         <PassengerProvider value={passengerContextValue}>
             <Container>
                 <AddPassangerModal />
+                <PassengersGrid />
             </Container>
         </PassengerProvider>
     )

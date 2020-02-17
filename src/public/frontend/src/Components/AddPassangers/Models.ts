@@ -1,4 +1,5 @@
 export interface Passenger {
+    id: string;
     pClass: string;
     sex: string;
     age: string;
