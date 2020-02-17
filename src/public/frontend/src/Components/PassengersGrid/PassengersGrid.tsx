@@ -25,6 +25,11 @@ const PassengersGrid = () => {
 
     const columnDefs: ColDef[] = [
         {
+            headerName: 'Odds of Survival',
+            field: 'surivialPercentage',
+            valueFormatter: ({data}) => (parseFloat(data.surivialPercentage) * 100).toFixed(2)
+        },
+        {
             headerName: 'Age',
             field: 'age'
         },

@@ -11,7 +11,7 @@ export const passengerFormFieldsToFriendlyNames: { [key in keyof Passenger]: str
     ticketNumber: "Ticket Number",
     fare: "Passanger Fare",
     cabin: "Cabin Number",
-    embarked: "Port of Embarkation"
+    embarked: "Port of Embarkation",
 }
 
 export const PASSANGER_FORM_INITIAL_STATE: Passenger = {

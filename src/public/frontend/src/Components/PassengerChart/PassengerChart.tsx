@@ -10,26 +10,42 @@ const PassengerChart = () => {
     const [xAxisValue, setXAxisValue] = useState<keyof Passenger>('age');
     const { passengers } = useContext(PassengerContext);
 
-    const createSeries = () => passengers.map(passenger => [passenger[xAxisValue], passenger.surivialPercentage])
+    const createSeries = () => passengers
+        .filter(passenger => passenger.surivialPercentage !== undefined || passenger[xAxisValue])
+        .map(passenger => [parseFloat(passenger[xAxisValue] as string), (parseFloat(passenger.surivialPercentage || ''))  * 100])
 
     const chartConfig: Highcharts.Options = {
         chart: {
             type: (xAxisValue === 'embarked' || xAxisValue === 'sex') ? 'bar' : 'scatter'
         },
         title: {
-            text: `Surival Chance by ${passengerFormFieldsToFriendlyNames[xAxisValue]}`
+            text: `Odds of survival by ${passengerFormFieldsToFriendlyNames[xAxisValue]}`
+        },
+        xAxis: {
+            title: {
+                text: passengerFormFieldsToFriendlyNames[xAxisValue]
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Chance of Survival',
+            },
+            max: 100
         },
         series: [{
             type: (xAxisValue === 'embarked' || xAxisValue === 'sex') ? 'bar' : 'scatter',
             name: 'My first series',
             data: createSeries()
-        }]
+        }],
+        credits: {
+            enabled: false
+        }
     };
 
 
     return (
         <div>
-            <AxisDropdown selectedDropdownOption={xAxisValue} setDropdownOption={setXAxisValue}/>
+            <AxisDropdown selectedDropdownOption={xAxisValue} setDropdownOption={setXAxisValue} />
             <HighchartsReact
                 highcharts={Highcharts}
                 options={chartConfig}
