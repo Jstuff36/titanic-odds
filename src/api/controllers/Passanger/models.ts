@@ -1,4 +1,4 @@
-export interface Passanger {
+export interface Passenger {
     id: string;
     pClass: string;
     sex: string;
