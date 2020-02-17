@@ -1,0 +1,58 @@
+import { DropdownItemProps } from "semantic-ui-react";
+import { PassengerFormFields } from "./Models";
+
+export const passengerFormFieldsToFriendlyNames: { [key in keyof PassengerFormFields]: string } = {
+    pClass: "Ticket Class",
+    sex: "Sex",
+    age: "Age",
+    numberOfSiblingsOrSpousesAboard: "Number of Siblings or Spouses Aboard",
+    numberOfParentsOrChildrenAboard: "Number of Parents or Children Aboard",
+    ticketNumber: "Ticket Number",
+    fare: "Passanger Fare",
+    cabin: "Cabin Number",
+    embarked: "Port of Embarkation"
+}
+
+export const PASSANGER_FORM_INITIAL_STATE: PassengerFormFields = {
+    pClass: '',
+    sex: '',
+    age: '',
+    numberOfSiblingsOrSpousesAboard: '',
+    numberOfParentsOrChildrenAboard: '',
+    ticketNumber: '',
+    fare: '',
+    cabin: '',
+    embarked: ''
+}
+
+export const GENDER_DROPDOWN_ITEMS: DropdownItemProps[] = [
+    {
+        text: 'male',
+    },
+    {
+        text: 'femlae',
+    }
+];
+
+export const EMBARKED_LOCATIONS: DropdownItemProps[] = [
+    {
+        text: 'Cherbourg'
+    },
+    {
+        text: 'Queenstown'
+    },
+    {
+        text: 'Southampton'
+    }
+]
+
+export const IMPORT_OPTIONS: DropdownItemProps[] = [
+    {
+        text: 'Import Passangers Information',
+        value: 'import'
+    },
+    {
+        text: 'Manually Enter Information',
+        value: 'form'
+    }
+]
