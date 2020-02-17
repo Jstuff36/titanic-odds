@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Form, DropdownProps, InputOnChangeData } from "semantic-ui-react";
 import { passengerFormFieldsToFriendlyNames, EMBARKED_LOCATIONS, GENDER_DROPDOWN_ITEMS } from './PassangerConstants';
-import { PassengerFormFields } from './Models';
+import { Passenger } from './Models';
 
 interface OwnProps {
-    passangerFormFields: PassengerFormFields;
+    passangerFormFields: Passenger;
     setPassangerFormFields: (key: string, value: string) => void;
 }
 

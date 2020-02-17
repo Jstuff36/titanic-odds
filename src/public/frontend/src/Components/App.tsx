@@ -1,11 +1,13 @@
 import React from 'react';
-import AddPassangerModal from './AddPassangers/AddPassangerModal';
+import Header from './Header/Header';
+import LandingPage from './LandingPage/LandingPage';
 
 function App() {
 
   return (
     <div>
-      <AddPassangerModal/>
+      <Header/>
+      <LandingPage/>
     </div>
   );
 }

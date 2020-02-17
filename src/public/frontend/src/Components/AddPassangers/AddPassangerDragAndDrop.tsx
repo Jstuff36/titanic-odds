@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DragEventHandler } from 'react';
-import { PassengerFormFields } from './Models';
+import { Passenger } from './Models';
 
 interface OwnProps {
-    onImportPassangers: (passangers: PassengerFormFields[]) => void;
+    onImportPassangers: (passangers: Passenger[]) => void;
 }
 
 interface FileReaderEventTarget extends EventTarget {

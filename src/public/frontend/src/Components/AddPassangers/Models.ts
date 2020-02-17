@@ -1,4 +1,4 @@
-export interface PassengerFormFields {
+export interface Passenger {
     pClass: string;
     sex: string;
     age: string;

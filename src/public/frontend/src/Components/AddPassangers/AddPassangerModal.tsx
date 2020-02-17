@@ -1,23 +1,26 @@
-import * as React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Modal, Form, DropdownItemProps, DropdownProps, InputOnChangeData, Dropdown } from 'semantic-ui-react';
 import AddPassangerForm from './AddPassangerForm';
-import { useState } from 'react';
 import { PASSANGER_FORM_INITIAL_STATE, IMPORT_OPTIONS } from './PassangerConstants';
 import AddPassangerDragAndDrop from './AddPassangerDragAndDrop';
-import { PassengerFormFields } from './Models';
-import axios from 'axios';
+import { Passenger } from './Models';
+import axios, { AxiosResponse } from 'axios';
+import PassengerContext from '../../Context/PassangerContext';
 
 interface OwnProps { }
 
 const AddPassangerModal = ({ }: OwnProps) => {
+    
+    const {passengers, updatePassengers} = useContext(PassengerContext);
 
-    const [passangerFormFields, setPassangerFormFields] = useState<PassengerFormFields[]>([PASSANGER_FORM_INITIAL_STATE])
+    const [passangerFormFields, setPassangerFormFields] = useState<Passenger[]>([PASSANGER_FORM_INITIAL_STATE])
     const [importType, setImportType] = useState<string | null>(null)
 
     const onSubmit = async () => {
         try {
-            const {data} = await axios.post('/api/v1/passengar', passangerFormFields)
-            console.log(data);
+            const {data}: AxiosResponse<Passenger> = await axios.post('/api/v1/passengar', passangerFormFields)
+            updatePassengers([...passengers, data]);
+            setImportType(null);
         } catch (err) {
             // TODO handle error
             console.log(err);
@@ -26,19 +29,18 @@ const AddPassangerModal = ({ }: OwnProps) => {
 
     const onFormChange = (key: string, value: string) => setPassangerFormFields([{ ...passangerFormFields[0], [key]: value }]);
 
-    const onImport = (formFields: PassengerFormFields[]) => {
+    const onImport = (formFields: Passenger[]) => {
 
     }
-
-    console.log('Import type');
 
     return (
         <Modal
             open={!!importType}
+            onClose={() => setImportType(null)}
             trigger={
                 <Dropdown
                     selection
-                    label={"Add Passengars"}
+                    text={"Add Passengars"}
                     options={IMPORT_OPTIONS}
                     onChange={(_, { value }: DropdownProps) => setImportType(value as string)}
                 />
