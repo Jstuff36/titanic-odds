@@ -4,6 +4,7 @@ import { Passenger } from '../AddPassengers/Models';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import { passengerFormFieldsToFriendlyNames } from '../AddPassengers/PassangerConstants';
+import AxisDropdown from './AxisDropdown';
 
 const PassengerChart = () => {
     const [xAxisValue, setXAxisValue] = useState<keyof Passenger>('age');
@@ -27,10 +28,13 @@ const PassengerChart = () => {
 
 
     return (
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={chartConfig}
-        />
+        <div>
+            <AxisDropdown selectedDropdownOption={xAxisValue} setDropdownOption={setXAxisValue}/>
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={chartConfig}
+            />
+        </div>
     );
 
 }
