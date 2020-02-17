@@ -9,4 +9,5 @@ export interface Passenger {
     fare: string;
     cabin: string;
     embarked: string;
+    surivialPercentage?: number;
 }

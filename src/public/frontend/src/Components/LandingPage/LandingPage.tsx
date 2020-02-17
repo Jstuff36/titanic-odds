@@ -5,6 +5,7 @@ import { PassengerProvider, PassengerContextType } from "../../Context/Passanger
 import { Passenger } from "../AddPassangers/Models";
 import PassengersGrid from "../PassengersGrid/PassengersGrid";
 import axios, { AxiosResponse } from 'axios';
+import PassengerChart from "../PassengerChart/PassengerChart";
 
 const LandingPage = () => {
 
@@ -13,7 +14,7 @@ const LandingPage = () => {
     const fetchPassengers = useCallback(async () => await axios.get<Passenger[]>('/api/v1/passengar'), []);
 
     useEffect(() => {
-        fetchPassengers().then(({data}) => setPassengers(data));
+        fetchPassengers().then(({ data }) => setPassengers(data));
     }, [fetchPassengers, setPassengers])
 
     const passengerContextValue: PassengerContextType = useMemo(() => (
@@ -27,6 +28,7 @@ const LandingPage = () => {
         <PassengerProvider value={passengerContextValue}>
             <Container>
                 <AddPassangerModal />
+                <PassengerChart />
                 <PassengersGrid />
             </Container>
         </PassengerProvider>

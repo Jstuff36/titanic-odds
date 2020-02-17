@@ -1,4 +1,5 @@
 export interface Passanger {
+    id: string;
     pClass: string;
     sex: string;
     age: string;
@@ -8,4 +9,5 @@ export interface Passanger {
     fare: string;
     cabin: string;
     embarked: string;
+    surivialPercentage?: number;
 }
