@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, KeyboardEventHandler } from 'react';
 import { DragEventHandler } from 'react';
 import { Passenger } from './Models';
 import './AddPassengerModal.css';
@@ -18,6 +18,7 @@ interface FileReaderEvent extends ProgressEvent {
     getMessage(): string;
 }
 
+// TODO handle import errors
 const AddPassangerDragAndDrop = ({ onImportPassangers }: OwnProps) => {
 
     const [fileDropIsActive, setFileDropIsActive] = useState<boolean>(false);
@@ -33,7 +34,7 @@ const AddPassangerDragAndDrop = ({ onImportPassangers }: OwnProps) => {
         fileReader.onload = () => {
             const rawData = (fileReader.result as string).replace(/[="]/g, '');
             const parsedPassengerData: Passenger[] = readFromCsv(rawData);
-            debugger;
+            onImportPassangers(parsedPassengerData);
         };
         fileReader.onabort = unsetFileDropIsActive;
         fileReader.onerror = unsetFileDropIsActive;
@@ -45,6 +46,15 @@ const AddPassangerDragAndDrop = ({ onImportPassangers }: OwnProps) => {
         e.stopPropagation();
         e.preventDefault();
         setFileDropIsActive(true);
+    }
+
+    const handleKeyUp: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        if (e.currentTarget && e.currentTarget.value) {
+            const parsedPassengerData: Passenger[] = readFromCsv(e.currentTarget.value);
+            onImportPassangers(parsedPassengerData);
+        }
     }
 
     return (
@@ -98,6 +108,9 @@ const AddPassangerDragAndDrop = ({ onImportPassangers }: OwnProps) => {
                     </table>
                 </List.Item>
             </List>
+            <div className={'pasteTextArea'}>
+                <textarea rows={3} onKeyUp={handleKeyUp}/>
+            </div>
         </div>
 
     )

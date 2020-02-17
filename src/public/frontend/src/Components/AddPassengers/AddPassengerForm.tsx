@@ -4,15 +4,15 @@ import { passengerFormFieldsToFriendlyNames, EMBARKED_LOCATIONS, GENDER_DROPDOWN
 import { Passenger } from './Models';
 
 interface OwnProps {
-    passangerFormFields: Passenger;
-    setPassangerFormFields: (key: string, value: string) => void;
+    passengerFormFields: Passenger;
+    setPassengerFormFields: (key: string, value: string) => void;
 }
 
-const AddPassangerForm = ({ passangerFormFields, setPassangerFormFields }: OwnProps) => {
+const AddPassangerForm = ({ passengerFormFields, setPassengerFormFields }: OwnProps) => {
     return (
         <Form>
             {
-                Object.keys(passangerFormFields).map(fieldKey => {
+                Object.keys(passengerFormFields).map(fieldKey => {
                     if (fieldKey === 'sex' || fieldKey === 'embarked') {
                         return (
                             <Form.Dropdown
@@ -20,8 +20,8 @@ const AddPassangerForm = ({ passangerFormFields, setPassangerFormFields }: OwnPr
                                 label={passengerFormFieldsToFriendlyNames[fieldKey]}
                                 key={fieldKey}
                                 options={fieldKey === 'sex' ? GENDER_DROPDOWN_ITEMS : EMBARKED_LOCATIONS}
-                                value={passangerFormFields[fieldKey]}
-                                onChange={(_, { value }: DropdownProps) => setPassangerFormFields(fieldKey, value as string)}
+                                value={passengerFormFields[fieldKey]}
+                                onChange={(_, { value }: DropdownProps) => setPassengerFormFields(fieldKey, value as string)}
                             />
                         )
                     } else {
@@ -29,8 +29,8 @@ const AddPassangerForm = ({ passangerFormFields, setPassangerFormFields }: OwnPr
                             <Form.Input
                                 key={fieldKey}
                                 label={passengerFormFieldsToFriendlyNames[fieldKey]}
-                                value={passangerFormFields[fieldKey]}
-                                onChange={((_, { value }: InputOnChangeData) => setPassangerFormFields(fieldKey, value))}
+                                value={passengerFormFields[fieldKey]}
+                                onChange={((_, { value }: InputOnChangeData) => setPassengerFormFields(fieldKey, value))}
                             />
                         )
                     }

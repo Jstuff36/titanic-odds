@@ -13,12 +13,14 @@ const AddPassangerModal = ({ }: OwnProps) => {
     
     const {passengers, updatePassengers} = useContext(PassengerContext);
 
-    const [passangerFormFields, setPassangerFormFields] = useState<Passenger[]>([PASSANGER_FORM_INITIAL_STATE])
+    const [passengerFormFields, setPassengerFormFields] = useState<Passenger>(PASSANGER_FORM_INITIAL_STATE)
     const [importType, setImportType] = useState<string | null>('import')
+
+    const postPassengers = (passengers: Passenger[]) => axios.post('/api/v1/passengar', passengers);
 
     const onSubmit = async () => {
         try {
-            const {data}: AxiosResponse<Passenger> = await axios.post('/api/v1/passengar', passangerFormFields)
+            const { data }: AxiosResponse<Passenger> = await postPassengers([passengerFormFields])
             updatePassengers([...passengers, data]);
             setImportType(null);
         } catch (err) {
@@ -27,10 +29,17 @@ const AddPassangerModal = ({ }: OwnProps) => {
         }
     };
 
-    const onFormChange = (key: string, value: string) => setPassangerFormFields([{ ...passangerFormFields[0], [key]: value }]);
+    const onFormChange = (key: string, value: string) => setPassengerFormFields({ ...passengerFormFields, [key]: value });
 
-    const onImport = (formFields: Passenger[]) => {
-
+    const onImport = async (passengers: Passenger[]) => {
+        try {
+            const { data }: AxiosResponse<Passenger> = await postPassengers(passengers)
+            updatePassengers([...passengers, data]);
+            setImportType(null);
+        } catch (err) {
+            // TODO handle error
+            console.log(err);
+        }
     }
 
     return (
@@ -49,7 +58,7 @@ const AddPassangerModal = ({ }: OwnProps) => {
             <Modal.Content>
                 {
                     importType === 'form' ?
-                        <AddPassangerForm setPassangerFormFields={onFormChange} passangerFormFields={passangerFormFields[0]} />
+                        <AddPassangerForm setPassengerFormFields={onFormChange} passengerFormFields={passengerFormFields} />
                         :
                         <AddPassangerDragAndDrop onImportPassangers={onImport} />
                 }
