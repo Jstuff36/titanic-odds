@@ -1,0 +1,9 @@
+# Built/Transpiled files
+**/build/
+**/src/**/*.js
+**/src/**/*.js.map
+
+
+# Misc
+**/node_modules/
+**/yarn.lock
