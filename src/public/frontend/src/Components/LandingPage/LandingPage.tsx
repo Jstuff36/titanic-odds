@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { Container } from "semantic-ui-react";
-import AddPassangerModal from "../AddPassangers/AddPassangerModal";
-import { PassengerProvider, PassengerContextType } from "../../Context/PassangerContext";
-import { Passenger } from "../AddPassangers/Models";
+import AddPassangerModal from "../AddPassengers/AddPassengerModal";
+import { PassengerProvider, PassengerContextType } from "../../Context/PassengerContext";
+import { Passenger } from "../AddPassengers/Models";
 import PassengersGrid from "../PassengersGrid/PassengersGrid";
 import axios, { AxiosResponse } from 'axios';
 import PassengerChart from "../PassengerChart/PassengerChart";

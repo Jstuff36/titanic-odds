@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import PassengerContext from '../../Context/PassangerContext';
-import { Passenger } from '../AddPassangers/Models';
+import PassengerContext from '../../Context/PassengerContext';
+import { Passenger } from '../AddPassengers/Models';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
-import { passengerFormFieldsToFriendlyNames } from '../AddPassangers/PassangerConstants';
+import { passengerFormFieldsToFriendlyNames } from '../AddPassengers/PassangerConstants';
 
 const PassengerChart = () => {
     const [xAxisValue, setXAxisValue] = useState<keyof Passenger>('age');

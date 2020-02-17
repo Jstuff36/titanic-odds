@@ -1,5 +1,5 @@
 import React from 'react';
-import { Passenger } from "../Components/AddPassangers/Models";
+import { Passenger } from "../Components/AddPassengers/Models";
 
 export interface PassengerContextType {
     passengers: Passenger[];

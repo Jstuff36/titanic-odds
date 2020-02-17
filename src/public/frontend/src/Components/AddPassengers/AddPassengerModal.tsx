@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Button, Modal, Form, DropdownItemProps, DropdownProps, InputOnChangeData, Dropdown } from 'semantic-ui-react';
-import AddPassangerForm from './AddPassangerForm';
+import AddPassangerForm from './AddPassengerForm';
 import { PASSANGER_FORM_INITIAL_STATE, IMPORT_OPTIONS } from './PassangerConstants';
-import AddPassangerDragAndDrop from './AddPassangerDragAndDrop';
+import AddPassangerDragAndDrop from './AddPassengerDragAndDrop';
 import { Passenger } from './Models';
 import axios, { AxiosResponse } from 'axios';
-import PassengerContext from '../../Context/PassangerContext';
+import PassengerContext from '../../Context/PassengerContext';
 
 interface OwnProps { }
 
@@ -14,7 +14,7 @@ const AddPassangerModal = ({ }: OwnProps) => {
     const {passengers, updatePassengers} = useContext(PassengerContext);
 
     const [passangerFormFields, setPassangerFormFields] = useState<Passenger[]>([PASSANGER_FORM_INITIAL_STATE])
-    const [importType, setImportType] = useState<string | null>(null)
+    const [importType, setImportType] = useState<string | null>('import')
 
     const onSubmit = async () => {
         try {

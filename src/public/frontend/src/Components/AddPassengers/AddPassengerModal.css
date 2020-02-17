@@ -1,0 +1,27 @@
+.dragAndDropContainer {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    padding: 15px;
+    border: 3px dashed #ccc;
+    color: #777;
+}
+
+.exampleTable {
+    border-collapse: collapse;
+    border: double;
+}
+
+.exampleTable th {
+    font-size: 13px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.exampleTable td {
+    font-size: 11px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
