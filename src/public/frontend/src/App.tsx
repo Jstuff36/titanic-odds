@@ -5,7 +5,17 @@ function App() {
 
   const callExpress = async () => {
     try {
-      let response = await axios.get('/api/v1/passengar/Justin')
+      let response = await axios.post('/api/v1/passengar', {
+        pClass: 'hi',
+        sex: 'M',
+        age: '23',
+        numberOfSiblingsOrSpousesAboard: '5',
+        numberOfParentsOrChildrenAboard: '5',
+        ticketNumber: '1',
+        fare: '3412',
+        cabin: '1',
+        embarked: 'New York'
+      })
         .then(res => res.data.toString());
       alert('Hi this is a response from the backend: ' + response.data);
     } catch (err) {

@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import * as controllers from './controllers';
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
-import PassengerController from './controllers/PassengerController';
+import PassengerController from './controllers/Passanger/PassengerController';
 
 class ApiServer extends Server {
 
