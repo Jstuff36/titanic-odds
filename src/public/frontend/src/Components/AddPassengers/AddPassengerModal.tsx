@@ -1,27 +1,28 @@
 import React, { useContext, useState } from 'react';
-import { Button, Modal, Form, DropdownItemProps, DropdownProps, InputOnChangeData, Dropdown } from 'semantic-ui-react';
+import { Button, Modal, DropdownProps, Dropdown } from 'semantic-ui-react';
 import AddPassangerForm from './AddPassengerForm';
 import { PASSANGER_FORM_INITIAL_STATE, IMPORT_OPTIONS } from './PassangerConstants';
 import AddPassangerDragAndDrop from './AddPassengerDragAndDrop';
 import { Passenger } from './Models';
 import axios, { AxiosResponse } from 'axios';
 import PassengerContext from '../../Context/PassengerContext';
+import { fetchPassengers } from '../../ApiCall';
 
 interface OwnProps { }
 
 const AddPassangerModal = ({ }: OwnProps) => {
-    
-    const {passengers, updatePassengers} = useContext(PassengerContext);
+
+    const { updatePassengers } = useContext(PassengerContext);
 
     const [passengerFormFields, setPassengerFormFields] = useState<Passenger>(PASSANGER_FORM_INITIAL_STATE)
-    const [importType, setImportType] = useState<string | null>('import')
+    const [importType, setImportType] = useState<string | null>(null)
 
     const postPassengers = (passengers: Passenger[]) => axios.post('/api/v1/passengar', passengers);
 
     const onSubmit = async () => {
         try {
-            const { data }: AxiosResponse<Passenger> = await postPassengers([passengerFormFields])
-            updatePassengers([...passengers, data]);
+            await postPassengers([passengerFormFields]);
+            await fetchPassengers(updatePassengers);
             setImportType(null);
         } catch (err) {
             // TODO handle error
@@ -33,8 +34,8 @@ const AddPassangerModal = ({ }: OwnProps) => {
 
     const onImport = async (passengers: Passenger[]) => {
         try {
-            const { data }: AxiosResponse<Passenger> = await postPassengers(passengers)
-            updatePassengers([...passengers, data]);
+            await postPassengers(passengers);
+            await fetchPassengers(updatePassengers);
             setImportType(null);
         } catch (err) {
             // TODO handle error
