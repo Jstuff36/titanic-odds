@@ -5,9 +5,9 @@ function App() {
 
   const callExpress = async () => {
     try {
-      let response = await axios.get('http://localhost:3030/api/v1/passengar/Justin')
-        .then(res => res.json());
-      alert('Hi this is a response from the backend: ' + response.response);
+      let response = await axios.get('/api/v1/passengar/Justin')
+        .then(res => res.data.toString());
+      alert('Hi this is a response from the backend: ' + response.data);
     } catch (err) {
       alert(err);
     }

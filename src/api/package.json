@@ -1,7 +1,7 @@
 {
   "name": "titanic-odds",
   "version": "1.0.0",
-  "main": "start.ts",
+  "main": "./start.ts",
   "repository": "https://github.com/Jstuff36/titanic-odds",
   "author": "Justin White",
   "license": "MIT",
@@ -16,6 +16,6 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start-dev": "nodemon --config \"./util/nodemon.json\"/"
+    "start-dev": "nodemon --config \"./api/util/nodemon.json\"/"
   }
 }

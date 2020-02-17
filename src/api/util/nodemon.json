@@ -6,5 +6,5 @@
     "ignore": [
         "src/public"
     ],
-    "exec": "ts-node src/start.ts dev"
+    "exec": "ts-node src/api/start.ts dev"
 }

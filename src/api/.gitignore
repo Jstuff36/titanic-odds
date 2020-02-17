@@ -5,5 +5,5 @@
 
 
 # Misc
-**/node_modules/
-**/yarn.lock
+**/src/node_modules/
+**/src/yarn.lock
