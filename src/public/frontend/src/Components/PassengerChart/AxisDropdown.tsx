@@ -20,12 +20,16 @@ const AxisDropdown = ({ selectedDropdownOption, setDropdownOption }: OwnProps) =
     const onDropdownChange = (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => setDropdownOption(data.value as keyof Passenger);
 
     return (
-        <Dropdown
-            options={dropDownOptions}
-            value={selectedDropdownOption}
-            onChange={onDropdownChange}
-            selection
-        />
+        <div style={{display: 'flex'}}>
+            <span style={{alignSelf: 'center'}}>X-Axis:</span>
+            &nbsp;
+            <Dropdown
+                options={dropDownOptions}
+                value={selectedDropdownOption}
+                onChange={onDropdownChange}
+                selection
+            />
+        </div>
     )
 };
 

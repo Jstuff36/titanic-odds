@@ -23,6 +23,7 @@ export const passengerFormFieldsToFriendlyNames: { [key in keyof Passenger]: str
 export const PASSANGER_FORM_INITIAL_STATE: Passenger = {
     id: '',
     pClass: '',
+    embarked: 'Q',
     sex: 'male',
     age: '',
     numberOfSiblingsOrSpousesAboard: '',
@@ -30,7 +31,6 @@ export const PASSANGER_FORM_INITIAL_STATE: Passenger = {
     ticketNumber: '',
     fare: '',
     cabin: '',
-    embarked: 'Q'
 }
 
 export const GENDER_DROPDOWN_ITEMS: DropdownItemProps[] = [

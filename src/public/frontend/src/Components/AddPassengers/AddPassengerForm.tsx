@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Form, DropdownProps, InputOnChangeData } from "semantic-ui-react";
 import { passengerFormFieldsToFriendlyNames, EMBARKED_LOCATIONS, GENDER_DROPDOWN_ITEMS } from './PassangerConstants';
 import { Passenger } from './Models';
+import './AddPassengerModal.css';
 
 interface OwnProps {
     passengerFormFields: Passenger;
@@ -10,7 +11,7 @@ interface OwnProps {
 
 const AddPassangerForm = ({ passengerFormFields, setPassengerFormFields }: OwnProps) => {
     return (
-        <Form>
+        <Form className={'formContianer'}>
             {
                 Object.keys(passengerFormFields).map(fieldKey => {
                     if (fieldKey === 'sex' || fieldKey === 'embarked') {

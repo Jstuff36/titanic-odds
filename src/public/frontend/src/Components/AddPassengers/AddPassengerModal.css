@@ -41,3 +41,8 @@
     opacity: 0;
     cursor: pointer;
 }
+
+.formContianer {
+    height: 500px;
+    overflow-y: auto;
+}

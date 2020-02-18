@@ -4,7 +4,7 @@ import AddPassangerForm from './AddPassengerForm';
 import { PASSANGER_FORM_INITIAL_STATE, IMPORT_OPTIONS } from './PassangerConstants';
 import AddPassangerDragAndDrop from './AddPassengerDragAndDrop';
 import { Passenger } from './Models';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import PassengerContext from '../../Context/PassengerContext';
 import { fetchPassengers } from '../../ApiCall';
 
@@ -25,6 +25,7 @@ const AddPassangerModal = ({ }: OwnProps) => {
         try {
             await postPassengers([passengerFormFields]);
             await fetchPassengers(updatePassengers);
+            setPassengerFormFields(PASSANGER_FORM_INITIAL_STATE);
             setImportType(null);
         } catch (err) {
             // TODO handle error
@@ -61,6 +62,7 @@ const AddPassangerModal = ({ }: OwnProps) => {
 
     return (
         <Modal
+            size={'large'}
             open={!!importType}
             onClose={onClose}
             trigger={renderTrigger()}>
