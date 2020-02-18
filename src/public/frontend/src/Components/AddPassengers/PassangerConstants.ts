@@ -1,6 +1,12 @@
 import { DropdownItemProps } from "semantic-ui-react";
 import { Passenger } from "./Models";
 
+export const passengerPropertyToUserFriendlyName: { [key: string]: string } = {
+    S: 'Southampton',
+    Q: 'QueensTown',
+    C: 'Cherbourg'
+};
+
 export const passengerFormFieldsToFriendlyNames: { [key in keyof Passenger]: string } = {
     id: "ID",
     sex: "Sex",

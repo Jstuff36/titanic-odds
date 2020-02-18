@@ -1,13 +1,7 @@
 import Highcharts from 'highcharts';
-import { passengerFormFieldsToFriendlyNames } from '../AddPassengers/PassangerConstants';
+import { passengerFormFieldsToFriendlyNames, passengerPropertyToUserFriendlyName } from '../AddPassengers/PassangerConstants';
 import { Passenger } from '../AddPassengers/Models';
 import { groupBy } from 'lodash';
-
-const propertyToUserFriendlyName: {[key: string]: string} = {
-    S: 'Southampton',
-    Q: 'QueensTown',
-    C: 'Cherbourg'
-};
 
 const createScatterPlotSeries = (passengers: Passenger[], xAxisValue: string) => {
     return passengers
@@ -49,7 +43,7 @@ const createUnqiueChartSeries = (passengers: Passenger[], xAxisValue: string) =>
         data: groupedPassengers[group]
             .filter(passenger => passenger.surivialPercentage !== undefined)
             .map(passenger => parseFloat(passenger.surivialPercentage || '') * 100),
-        name: propertyToUserFriendlyName[group] || group,
+        name: passengerPropertyToUserFriendlyName[group] || group,
         type: 'scatter',
         showInLegend: true
     }))

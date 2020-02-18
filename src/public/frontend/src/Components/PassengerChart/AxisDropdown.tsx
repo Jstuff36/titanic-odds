@@ -11,7 +11,7 @@ interface OwnProps {
 const AxisDropdown = ({ selectedDropdownOption, setDropdownOption }: OwnProps) => {
 
     const dropDownOptions: DropdownItemProps[] = Object.keys(passengerFormFieldsToFriendlyNames)
-        .filter(key => key !== 'id')
+        .filter(key => key !== 'id' && key !== 'cabin')
         .map<DropdownItemProps>(key => ({
             text: passengerFormFieldsToFriendlyNames[key],
             value: key
