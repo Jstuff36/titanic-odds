@@ -1,18 +1,18 @@
-import { Passenger } from "./Models"
+import { Passenger, Sex, PortOfEmbarkation } from "./Models"
 import * as Papa from 'papaparse';
 
 const buildPassengersFromRows = (parsedData: string[][]): Passenger[] => {
     return parsedData.map<Passenger>(row => ({
         id: row[0],
         pClass: row[1],
-        sex: row[2],
+        sex: row[2] as Sex,
         age: row[3],
         numberOfSiblingsOrSpousesAboard: row[4],
         numberOfParentsOrChildrenAboard: row[5],
         ticketNumber: row[6],
         fare: row[7],
         cabin: row[8],
-        embarked: row[9]
+        embarked: row[9] as PortOfEmbarkation
     }))
 }
 

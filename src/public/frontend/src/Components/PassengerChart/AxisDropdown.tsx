@@ -10,10 +10,12 @@ interface OwnProps {
 
 const AxisDropdown = ({ selectedDropdownOption, setDropdownOption }: OwnProps) => {
 
-    const dropDownOptions: DropdownItemProps[] = Object.keys(passengerFormFieldsToFriendlyNames).map<DropdownItemProps>(key => ({
-        text: passengerFormFieldsToFriendlyNames[key],
-        value: key
-    }))
+    const dropDownOptions: DropdownItemProps[] = Object.keys(passengerFormFieldsToFriendlyNames)
+        .filter(key => key !== 'id')
+        .map<DropdownItemProps>(key => ({
+            text: passengerFormFieldsToFriendlyNames[key],
+            value: key
+        }))
 
     const onDropdownChange = (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => setDropdownOption(data.value as keyof Passenger);
 

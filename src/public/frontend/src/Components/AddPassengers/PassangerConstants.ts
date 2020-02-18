@@ -3,47 +3,52 @@ import { Passenger } from "./Models";
 
 export const passengerFormFieldsToFriendlyNames: { [key in keyof Passenger]: string } = {
     id: "ID",
-    pClass: "Ticket Class",
     sex: "Sex",
+    embarked: "Port of Embarkation",
     age: "Age",
     numberOfSiblingsOrSpousesAboard: "Number of Siblings or Spouses Aboard",
     numberOfParentsOrChildrenAboard: "Number of Parents or Children Aboard",
     ticketNumber: "Ticket Number",
     fare: "Passanger Fare",
     cabin: "Cabin Number",
-    embarked: "Port of Embarkation",
+    pClass: "Ticket Class",
 }
 
 export const PASSANGER_FORM_INITIAL_STATE: Passenger = {
     id: '',
     pClass: '',
-    sex: '',
+    sex: 'male',
     age: '',
     numberOfSiblingsOrSpousesAboard: '',
     numberOfParentsOrChildrenAboard: '',
     ticketNumber: '',
     fare: '',
     cabin: '',
-    embarked: ''
+    embarked: 'Q'
 }
 
 export const GENDER_DROPDOWN_ITEMS: DropdownItemProps[] = [
     {
+        value: 'male',
         text: 'male',
     },
     {
-        text: 'femlae',
+        value: 'female',
+        text: 'female',
     }
 ];
 
 export const EMBARKED_LOCATIONS: DropdownItemProps[] = [
     {
+        value: 'C',
         text: 'Cherbourg'
     },
     {
+        value: 'Q',
         text: 'Queenstown'
     },
     {
+        value: 'S',
         text: 'Southampton'
     }
 ]
