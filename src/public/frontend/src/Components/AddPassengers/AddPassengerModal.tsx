@@ -7,12 +7,14 @@ import { Passenger } from './Models';
 import axios from 'axios';
 import PassengerContext from '../../Context/PassengerContext';
 import { fetchPassengers } from '../../ApiCall';
+import LoadingContext from '../../Context/LoadingContext';
 
 interface OwnProps { }
 
 const AddPassangerModal = ({ }: OwnProps) => {
 
     const { updatePassengers } = useContext(PassengerContext);
+    const {setLoadingState} = useContext(LoadingContext);
 
     const [passengerFormFields, setPassengerFormFields] = useState<Passenger>(PASSANGER_FORM_INITIAL_STATE)
     const [importType, setImportType] = useState<string | null>(null)
@@ -23,10 +25,12 @@ const AddPassangerModal = ({ }: OwnProps) => {
 
     const onSubmit = async () => {
         try {
+            setLoadingState(true);
+            setImportType(null);
             await postPassengers([passengerFormFields]);
             await fetchPassengers(updatePassengers);
             setPassengerFormFields(PASSANGER_FORM_INITIAL_STATE);
-            setImportType(null);
+            setLoadingState(false);
         } catch (err) {
             // TODO handle error
             console.log(err);
@@ -37,9 +41,11 @@ const AddPassangerModal = ({ }: OwnProps) => {
 
     const onImport = async (passengers: Passenger[]) => {
         try {
+            setLoadingState(true);
+            setImportType(null);
             await postPassengers(passengers);
             await fetchPassengers(updatePassengers);
-            setImportType(null);
+            setLoadingState(false);
         } catch (err) {
             // TODO handle error
             console.log(err);
@@ -52,7 +58,7 @@ const AddPassangerModal = ({ }: OwnProps) => {
                 <Dropdown.Menu>
                     {
                         IMPORT_OPTIONS.map(option =>
-                            <Dropdown.Item onClick={() => setImportType(option.value)}>{option.text}</Dropdown.Item>
+                            <Dropdown.Item key={option.value} onClick={() => setImportType(option.value)}>{option.text}</Dropdown.Item>
                         )
                     }
                 </Dropdown.Menu>

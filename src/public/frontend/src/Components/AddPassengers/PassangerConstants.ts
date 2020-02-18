@@ -47,15 +47,15 @@ export const GENDER_DROPDOWN_ITEMS: DropdownItemProps[] = [
 export const EMBARKED_LOCATIONS: DropdownItemProps[] = [
     {
         value: 'C',
-        text: 'Cherbourg'
+        text: 'Cherbourg',
     },
     {
         value: 'Q',
-        text: 'Queenstown'
+        text: 'Queenstown',
     },
     {
         value: 'S',
-        text: 'Southampton'
+        text: 'Southampton',
     }
 ]
 
