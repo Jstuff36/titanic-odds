@@ -83,7 +83,10 @@ const AddPassangerModal = ({ }: OwnProps) => {
                         <AddPassangerDragAndDrop onImportPassangers={onImport} />
                 }
             </Modal.Content>
-            <Modal.Actions><Button content={'Submit'} onClick={onSubmit}></Button></Modal.Actions>
+            <Modal.Actions>
+                <Button basic content={'Cancel'} onClick={onClose}/>
+                <Button primary content={'Submit'} onClick={onSubmit}/>
+                </Modal.Actions>
         </Modal>
     );
 };
