@@ -8,7 +8,7 @@ import { addPassangers, getPassangers } from './PassengerService';
 @Controller('api/v1/passengar')
 class PassengerController {
 
-    @Get()
+    @Get('')
     private getAll(_: Request, res: Response) {
         try {
             Logger.Info(`Getting all passengers`);
