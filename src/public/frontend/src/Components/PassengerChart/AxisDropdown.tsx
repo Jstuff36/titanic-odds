@@ -20,8 +20,8 @@ const AxisDropdown = ({ selectedDropdownOption, setDropdownOption }: OwnProps) =
     const onDropdownChange = (_: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => setDropdownOption(data.value as keyof Passenger);
 
     return (
-        <div style={{display: 'flex'}}>
-            <span style={{alignSelf: 'center'}}>X-Axis:</span>
+        <div style={{display: 'flex', paddingBottom: 10}}>
+            <span style={{ alignSelf: 'center' }}>{`Odds of survival by `}</span>
             &nbsp;
             <Dropdown
                 options={dropDownOptions}

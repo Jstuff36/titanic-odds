@@ -11,10 +11,11 @@ const createScatterPlotSeries = (passengers: Passenger[], xAxisValue: string) =>
 
 export const scatterPlotConfig = (passengers: Passenger[], xAxisValue: string): Highcharts.Options => ({
     chart: {
+        height: 500,
         type: 'scatter'
     },
     title: {
-        text: `Odds of survival by ${passengerFormFieldsToFriendlyNames[xAxisValue]}`
+        text: ''
     },
     xAxis: {
         title: {
@@ -52,10 +53,11 @@ const createUnqiueChartSeries = (passengers: Passenger[], xAxisValue: string) =>
 
 export const scatterWithSeries = (passengers: Passenger[], xAxisValue: string): Highcharts.Options => ({
     chart: {
+        height: 500,
         type: 'scatter'
     },
     title: {
-        text: `Odds of survival by ${passengerFormFieldsToFriendlyNames[xAxisValue]}`
+        text: ''
     },
     xAxis: {
         title: {
