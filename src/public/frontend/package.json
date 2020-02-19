@@ -14,6 +14,7 @@
     "ag-grid-community": "^22.1.1",
     "ag-grid-react": "^22.1.1",
     "axios": "^0.19.2",
+    "concurrently": "^5.1.0",
     "highcharts": "^8.0.0",
     "highcharts-react-official": "^2.2.2",
     "jest-environment-jsdom-fourteen": "^1.0.1",
@@ -26,7 +27,9 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client": "react-scripts start",
+    "server": "cd ../../api/ && yarn run start-dev",
+    "start": "concurrently \"yarn run client\" \"yarn run server\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject"
