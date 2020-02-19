@@ -1,1 +1,1 @@
-export * from './Passanger/PassengerController';
+export * from './Passenger/PassengerController';

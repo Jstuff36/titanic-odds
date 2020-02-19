@@ -3,12 +3,12 @@ import { Controller, Post, Get } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { Request, Response } from 'express';
 import { Passenger } from './models';
-import { addPassangers, getPassangers } from './PassangerService';
+import { addPassangers, getPassangers } from './PassengerService';
 
 @Controller('api/v1/passengar')
 class PassengerController {
 
-    @Get('')
+    @Get()
     private getAll(_: Request, res: Response) {
         try {
             Logger.Info(`Getting all passengers`);
