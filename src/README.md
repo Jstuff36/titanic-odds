@@ -21,4 +21,5 @@ Testing is accomplished using Jest for the frontend and Jasmine for the backend.
 * Use real DB such as MongoDB or PostGreSQL. (Need to explore benefits of relational vs non-relational database for this application)
 * HighCharts is very a powerful graphing tool and it would be cool to use it to display the data in more powerful ways
 * Ability to delete and update passenger data from the frontend
+* Better error handling by both the frontend and backend
 * Backend API needs to be more secure before this can be deployed on the public internet
