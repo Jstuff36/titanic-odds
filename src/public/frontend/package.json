@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
+    "@types/jest": "^25.1.2",
     "@types/lodash": "^4.14.149",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
@@ -16,6 +16,7 @@
     "axios": "^0.19.2",
     "highcharts": "^8.0.0",
     "highcharts-react-official": "^2.2.2",
+    "jest-environment-jsdom-fourteen": "^1.0.1",
     "lodash": "^4.17.15",
     "papaparse": "^5.1.1",
     "react": "^16.12.0",
@@ -27,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3030",

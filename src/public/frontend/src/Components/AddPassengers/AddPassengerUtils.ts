@@ -17,6 +17,7 @@ const buildPassengersFromRows = (parsedData: string[][]): Passenger[] => {
 }
 
 export const readFromCsv = (textData: string): Passenger[] => {
+    debugger;
     let parsedOutput = Papa.parse(textData, {skipEmptyLines: true});
     const knownDelimiters = ['\t', ' '];
     knownDelimiters.forEach(knownDelimiter => {
