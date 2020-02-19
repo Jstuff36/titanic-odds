@@ -7,7 +7,9 @@ export const addPassangers = (passengers: Passenger[]) => {
         ...passenger,
         surivialPercentage: Math.random()
     }));
-    passengersDatastore.insert(passengersWithSurvivalChance);
+    passengersDatastore.insert(passengersWithSurvivalChance, (err: Error) => {
+        throw new Error(err.message);
+    });
     return passengersWithSurvivalChance;
 };
 

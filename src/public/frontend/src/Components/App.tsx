@@ -15,9 +15,15 @@ const App = () => {
   const fetchInitialPassengers = useCallback(async () => await fetchPassengers(setPassengers), []);
 
   useEffect(() => {
-    fetchInitialPassengers();
-    setLoading(false);
-  }, [fetchInitialPassengers, setPassengers])
+    try {
+      fetchInitialPassengers();
+    } catch (e) {
+      // TODO handle errors
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
+  }, [fetchInitialPassengers, setPassengers]);
 
   const passengerContextValue: PassengerContextType = useMemo(() => ({
     passengers,

@@ -29,11 +29,12 @@ const AddPassangerModal = ({ }: OwnProps) => {
             setImportType(null);
             await postPassengers([passengerFormFields]);
             await fetchPassengers(updatePassengers);
-            setPassengerFormFields(PASSANGER_FORM_INITIAL_STATE);
-            setLoadingState(false);
         } catch (err) {
             // TODO handle error
             console.log(err);
+        } finally {
+            setPassengerFormFields(PASSANGER_FORM_INITIAL_STATE);
+            setLoadingState(false);
         }
     };
 
@@ -45,10 +46,11 @@ const AddPassangerModal = ({ }: OwnProps) => {
             setImportType(null);
             await postPassengers(passengers);
             await fetchPassengers(updatePassengers);
-            setLoadingState(false);
         } catch (err) {
             // TODO handle error
             console.log(err);
+        } finally {
+            setLoadingState(false);
         }
     }
 
